@@ -59,7 +59,7 @@
     const translations = {
       en: {
         title: "Receive in 15 minutes <span style='color: #e26e6e;'>into your bank account</span>",
-        offer: "Personalized loan offers up to <strong>200 000 Rs</strong>",
+        offer: "Personalized loan offers up to <strong>500 000 Rs</strong>",
         getLoan: "Get a loan",
         stepsTitle: "4 Easy Steps to get a Cash Loan",
         step1: "Apply for Loan",
@@ -80,7 +80,7 @@
       },
       si: {
         title: "මිනිත්තු 15ක් ඇතුළත <span style='color: #e26e6e;'>ඔබේ බැංකු ගිණුමට</span>",
-        offer: "පුද්ගලික ණය පැකේජයන්  <strong>200,000 රු</strong> දක්වා",
+        offer: "පුද්ගලික ණය පැකේජයන්  <strong>500,000 රු</strong> දක්වා",
         getLoan: "ණය ලබා ගන්න",
         stepsTitle: "මුදල් ණයක් ලබා ගැනීමේ පහසු පියවර 4ක්",
         step1: "ණය සඳහා අයදුම් කරන්න",
