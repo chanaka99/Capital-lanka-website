@@ -1,152 +1,187 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Capital Lanka</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f9f9f9;
+<script>
+  const translations = {
+    en: {
+      title: "Receive in 15 minutes <span style='color: #e26e6e;'>into your bank account</span>",
+      offer: "Personalized loan offers up to <strong>200 000 Rs</strong>",
+      getLoan: "Get a loan",
+      stepsTitle: "4 Easy Steps to get a Cash Loan",
+      step1: "Apply for Loan",
+      step1Desc: "Complete the application process in 3 minutes",
+      step2: "Wait for approval",
+      step2Desc: "You will receive our decision through SMS",
+      step3: "Get money",
+      step3Desc: "You’ll receive SMS about transfer on your account",
+      step4: "Convenient Repayments",
+      step4Desc: "Conveniently make repayments through our Island wide repayment network",
+      repayTitle: "How to repay the loan?",
+      repay1: "Online",
+      repay1Desc: "Make a loan repayment via an online bank transfer",
+      repay2: "Bank branch",
+      repay2Desc: "Repay the loan in one of the bank's branches",
+      repay3: "Mobile application",
+      repay3Desc: "Repay using iPay or your account on our site",
+    },
+    si: {
+      title: "මිනිත්තු 15ක් ඇතුළත <span style='color: #e26e6e;'>ඔබේ බැංකු ගිණුමට</span>",
+      offer: "පුද්ගලික ණය පැකේජයන්  <strong>200,000 රු</strong> දක්වා",
+      getLoan: "ණය ලබා ගන්න",
+      stepsTitle: "මුදල් ණයක් ලබා ගැනීමේ පහසු පියවර 4ක්",
+      step1: "ණය සඳහා අයදුම් කරන්න",
+      step1Desc: "අයදුම් කිරීමේ ක්‍රියාවලිය මිනිත්තු 3කින් අවසන් කරන්න",
+      step2: "අනුමැතිය බලාපොරොත්තු වන්න",
+      step2Desc: "අපගේ තීරණය SMS මඟින් ඔබ වෙත එවනු ඇත",
+      step3: "මුදල් ලබාගන්න",
+      step3Desc: "ඔබගේ ගිණුමට මාරු කිරීම පිළිබඳව SMS එකක් ලැබේ",
+      step4: "පැය 24 ක්ම පහසු වාරික ගෙවීම්",
+      step4Desc: "දූපත පුරා අපගේ ගෙවීම් ජාලය ඔස්සේ පහසුවෙන් ගෙවීම් කරන්න",
+      repayTitle: "ණය ගෙවීමේ ක්‍රම",
+      repay1: "මාර්ගගතව",
+      repay1Desc: "මාර්ගගත බැංකු මාරුකිරීමකින් ණය ගෙවීම සිදු කරන්න",
+      repay2: "බැංකු ශාඛාවකදී",
+      repay2Desc: "බැංකු ශාඛාවක ණය ගෙවීම සිදු කරන්න",
+      repay3: "ජංගම යෙදුම",
+      repay3Desc: "iPay හෝ අපගේ වෙබ් අඩවිය ඔස්සේ ගෙවීම කරන්න",
     }
-    button {
-      margin: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-    .section {
-      margin-top: 30px;
-    }
-    .step {
-      margin: 10px 0;
-    }
-    .loan-button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #e26e6e;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
+  };
 
-  <button>English</button>
-  <button>සිංහල</button>
+  const langButtons = document.querySelectorAll('button');
+  const elements = {
+    title: document.querySelector('h2'),
+    offer: document.querySelector('p'),
+    getLoan: document.querySelector('.loan-button'),
+    stepsTitle: document.querySelectorAll('.section h3')[0],
+    repayTitle: document.querySelectorAll('.section h3')[1],
 
-  <h2></h2>
-  <p></p>
-  <button class="loan-button"></button>
+    stepLabels: document.querySelectorAll('.section:nth-of-type(1) .step strong'),
+    stepDescs: document.querySelectorAll('.section:nth-of-type(1) .step span'),
 
-  <div class="section">
-    <h3></h3>
-    <div class="step"><strong></strong> – <span></span></div>
-    <div class="step"><strong></strong> – <span></span></div>
-    <div class="step"><strong></strong> – <span></span></div>
-    <div class="step"><strong></strong> – <span></span></div>
-  </div>
+    repayLabels: document.querySelectorAll('.section:nth-of-type(2) .step strong'),
+    repayDescs: document.querySelectorAll('.section:nth-of-type(2) .step span'),
+  };
 
-  <div class="section">
-    <h3></h3>
-    <div class="step"><strong></strong> – <span></span></div>
-    <div class="step"><strong></strong> – <span></span></div>
-    <div class="step"><strong></strong> – <span></span></div>
-  </div>
+  function changeLanguage(lang) {
+    const t = translations[lang];
+    elements.title.innerHTML = t.title;
+    elements.offer.innerHTML = t.offer;
+    elements.getLoan.textContent = t.getLoan;
+    elements.stepsTitle.textContent = t.stepsTitle;
+    elements.repayTitle.textContent = t.repayTitle;
 
-  <script>
-    const translations = {
-      en: {
-        title: "Receive in 15 minutes <span style='color: #e26e6e;'>into your bank account</span>",
-        offer: "Personalized loan offers up to <strong>200 000 Rs</strong>",
-        getLoan: "Get a loan",
-        stepsTitle: "4 Easy Steps to get a Cash Loan",
-        step1: "Apply for Loan",
-        step1Desc: "Complete the application process in 3 minutes",
-        step2: "Wait for approval",
-        step2Desc: "You will receive our decision through SMS",
-        step3: "Get money",
-        step3Desc: "You’ll receive SMS about transfer on your account",
-        step4: "Convenient Repayments",
-        step4Desc: "Conveniently make repayments through our Island wide repayment network",
-        repayTitle: "How to repay the loan?",
-        repay1: "Online",
-        repay1Desc: "Make a loan repayment via an online bank transfer",
-        repay2: "Bank branch",
-        repay2Desc: "Repay the loan in one of the bank's branches",
-        repay3: "Mobile application",
-        repay3Desc: "Repay using iPay or your account on our site",
-      },
-      si: {
-        title: "මිනිත්තු 15ක් ඇතුළත <span style='color: #e26e6e;'>ඔබේ බැංකු ගිණුමට</span>",
-        offer: "පුද්ගලික ණය පැකේජයන්  <strong>200,000 රු</strong> දක්වා",
-        getLoan: "ණය ලබා ගන්න",
-        stepsTitle: "මුදල් ණයක් ලබා ගැනීමේ පහසු පියවර 4ක්",
-        step1: "ණය සඳහා අයදුම් කරන්න",
-        step1Desc: "අයදුම් කිරීමේ ක්‍රියාවලිය මිනිත්තු 3කින් අවසන් කරන්න",
-        step2: "අනුමැතිය බලාපොරොත්තු වන්න",
-        step2Desc: "අපගේ තීරණය SMS මඟින් ඔබ වෙත එවනු ඇත",
-        step3: "මුදල් ලබාගන්න",
-        step3Desc: "ඔබගේ ගිණුමට මාරු කිරීම පිළිබඳව SMS එකක් ලැබේ",
-        step4: "පැය 24 ක්ම පහසු වාරික ගෙවීම්",
-        step4Desc: "දූපත පුරා අපගේ ගෙවීම් ජාලය ඔස්සේ පහසුවෙන් ගෙවීම් කරන්න",
-        repayTitle: "ණය ගෙවීමේ ක්‍රම",
-        repay1: "මාර්ගගතව",
-        repay1Desc: "මාර්ගගත බැංකු මාරුකිරීමකින් ණය ගෙවීම සිදු කරන්න",
-        repay2: "බැංකු ශාඛාවකදී",
-        repay2Desc: "බැංකු ශාඛාවක ණය ගෙවීම සිදු කරන්න",
-        repay3: "ජංගම යෙදුම",
-        repay3Desc: "iPay හෝ අපගේ වෙබ් අඩවිය ඔස්සේ ගෙවීම කරන්න",
-      }
-    };
+    elements.stepLabels[0].textContent = t.step1;
+    elements.stepDescs[0].textContent = t.step1Desc;
+    elements.stepLabels[1].textContent = t.step2;
+    elements.stepDescs[1].textContent = t.step2Desc;
+    elements.stepLabels[2].textContent = t.step3;
+    elements.stepDescs[2].textContent = t.step3Desc;
+    elements.stepLabels[3].textContent = t.step4;
+    elements.stepDescs[3].textContent = t.step4Desc;
 
-    const langButtons = document.querySelectorAll('button');
-    const elements = {
-      title: document.querySelector('h2'),
-      offer: document.querySelector('p'),
-      getLoan: document.querySelector('.loan-button'),
-      stepsTitle: document.querySelectorAll('.section h3')[0],
-      repayTitle: document.querySelectorAll('.section h3')[1],
-      stepLabels: document.querySelectorAll('.section:nth-of-type(1) .step strong'),
-      stepDescs: document.querySelectorAll('.section:nth-of-type(1) .step span'),
-      repayLabels: document.querySelectorAll('.section:nth-of-type(2) .step strong'),
-      repayDescs: document.querySelectorAll('.section:nth-of-type(2) .step span'),
-    };
+    elements.repayLabels[0].textContent = t.repay1;
+    elements.repayDescs[0].textContent = t.repay1Desc;
+    elements.repayLabels[1].textContent = t.repay2;
+    elements.repayDescs[1].textContent = t.repay2Desc;
+    elements.repayLabels[2].textContent = t.repay3;
+    elements.repayDescs[2].textContent = t.repay3Desc;
+  }
 
-    function changeLanguage(lang) {
-      const t = translations[lang];
-      elements.title.innerHTML = t.title;
-      elements.offer.innerHTML = t.offer;
-      elements.getLoan.textContent = t.getLoan;
-      elements.stepsTitle.textContent = t.stepsTitle;
-      elements.repayTitle.textContent = t.repayTitle;
-      elements.stepLabels[0].textContent = t.step1;
-      elements.stepDescs[0].textContent = t.step1Desc;
-      elements.stepLabels[1].textContent = t.step2;
-      elements.stepDescs[1].textContent = t.step2Desc;
-      elements.stepLabels[2].textContent = t.step3;
-      elements.stepDescs[2].textContent = t.step3Desc;
-      elements.stepLabels[3].textContent = t.step4;
-      elements.stepDescs[3].textContent = t.step4Desc;
-      elements.repayLabels[0].textContent = t.repay1;
-      elements.repayDescs[0].textContent = t.repay1Desc;
-      elements.repayLabels[1].textContent = t.repay2;
-      elements.repayDescs[1].textContent = t.repay2Desc;
-      elements.repayLabels[2].textContent = t.repay3;
-      elements.repayDescs[2].textContent = t.repay3Desc;
-    }
-
-    langButtons[0].addEventListener('click', function () {
-      changeLanguage('en');
-    });
-
-    langButtons[1].addEventListener('click', function () {
-      changeLanguage('si');
-    });
-
-    // Set default language
+  langButtons[0].addEventListener('click', function () {
     changeLanguage('en');
-  </script>
-</body>
-</html>
+  });
+
+  langButtons[1].addEventListener('click', function () {
+    changeLanguage('si');
+  });
+</script><script>
+  const translations = {
+    en: {
+      title: "Receive in 15 minutes <span style='color: #e26e6e;'>into your bank account</span>",
+      offer: "Personalized loan offers up to <strong>200 000 Rs</strong>",
+      getLoan: "Get a loan",
+      stepsTitle: "4 Easy Steps to get a Cash Loan",
+      step1: "Apply for Loan",
+      step1Desc: "Complete the application process in 3 minutes",
+      step2: "Wait for approval",
+      step2Desc: "You will receive our decision through SMS",
+      step3: "Get money",
+      step3Desc: "You’ll receive SMS about transfer on your account",
+      step4: "Convenient Repayments",
+      step4Desc: "Conveniently make repayments through our Island wide repayment network",
+      repayTitle: "How to repay the loan?",
+      repay1: "Online",
+      repay1Desc: "Make a loan repayment via an online bank transfer",
+      repay2: "Bank branch",
+      repay2Desc: "Repay the loan in one of the bank's branches",
+      repay3: "Mobile application",
+      repay3Desc: "Repay using iPay or your account on our site",
+    },
+    si: {
+      title: "මිනිත්තු 15ක් ඇතුළත <span style='color: #e26e6e;'>ඔබේ බැංකු ගිණුමට</span>",
+      offer: "පුද්ගලික ණය පැකේජයන්  <strong>200,000 රු</strong> දක්වා",
+      getLoan: "ණය ලබා ගන්න",
+      stepsTitle: "මුදල් ණයක් ලබා ගැනීමේ පහසු පියවර 4ක්",
+      step1: "ණය සඳහා අයදුම් කරන්න",
+      step1Desc: "අයදුම් කිරීමේ ක්‍රියාවලිය මිනිත්තු 3කින් අවසන් කරන්න",
+      step2: "අනුමැතිය බලාපොරොත්තු වන්න",
+      step2Desc: "අපගේ තීරණය SMS මඟින් ඔබ වෙත එවනු ඇත",
+      step3: "මුදල් ලබාගන්න",
+      step3Desc: "ඔබගේ ගිණුමට මාරු කිරීම පිළිබඳව SMS එකක් ලැබේ",
+      step4: "පැය 24 ක්ම පහසු වාරික ගෙවීම්",
+      step4Desc: "දූපත පුරා අපගේ ගෙවීම් ජාලය ඔස්සේ පහසුවෙන් ගෙවීම් කරන්න",
+      repayTitle: "ණය ගෙවීමේ ක්‍රම",
+      repay1: "මාර්ගගතව",
+      repay1Desc: "මාර්ගගත බැංකු මාරුකිරීමකින් ණය ගෙවීම සිදු කරන්න",
+      repay2: "බැංකු ශාඛාවකදී",
+      repay2Desc: "බැංකු ශාඛාවක ණය ගෙවීම සිදු කරන්න",
+      repay3: "ජංගම යෙදුම",
+      repay3Desc: "iPay හෝ අපගේ වෙබ් අඩවිය ඔස්සේ ගෙවීම කරන්න",
+    }
+  };
+
+  const langButtons = document.querySelectorAll('button');
+  const elements = {
+    title: document.querySelector('h2'),
+    offer: document.querySelector('p'),
+    getLoan: document.querySelector('.loan-button'),
+    stepsTitle: document.querySelectorAll('.section h3')[0],
+    repayTitle: document.querySelectorAll('.section h3')[1],
+
+    stepLabels: document.querySelectorAll('.section:nth-of-type(1) .step strong'),
+    stepDescs: document.querySelectorAll('.section:nth-of-type(1) .step span'),
+
+    repayLabels: document.querySelectorAll('.section:nth-of-type(2) .step strong'),
+    repayDescs: document.querySelectorAll('.section:nth-of-type(2) .step span'),
+  };
+
+  function changeLanguage(lang) {
+    const t = translations[lang];
+    elements.title.innerHTML = t.title;
+    elements.offer.innerHTML = t.offer;
+    elements.getLoan.textContent = t.getLoan;
+    elements.stepsTitle.textContent = t.stepsTitle;
+    elements.repayTitle.textContent = t.repayTitle;
+
+    elements.stepLabels[0].textContent = t.step1;
+    elements.stepDescs[0].textContent = t.step1Desc;
+    elements.stepLabels[1].textContent = t.step2;
+    elements.stepDescs[1].textContent = t.step2Desc;
+    elements.stepLabels[2].textContent = t.step3;
+    elements.stepDescs[2].textContent = t.step3Desc;
+    elements.stepLabels[3].textContent = t.step4;
+    elements.stepDescs[3].textContent = t.step4Desc;
+
+    elements.repayLabels[0].textContent = t.repay1;
+    elements.repayDescs[0].textContent = t.repay1Desc;
+    elements.repayLabels[1].textContent = t.repay2;
+    elements.repayDescs[1].textContent = t.repay2Desc;
+    elements.repayLabels[2].textContent = t.repay3;
+    elements.repayDescs[2].textContent = t.repay3Desc;
+  }
+
+  langButtons[0].addEventListener('click', function () {
+    changeLanguage('en');
+  });
+
+  langButtons[1].addEventListener('click', function () {
+    changeLanguage('si');
+  });
+</script>
